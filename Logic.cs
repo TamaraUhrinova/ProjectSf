@@ -44,9 +44,6 @@ namespace Projectsf
         }
 
 
-
-
-
         /*-----------------------------------------------------------------------------*/
         private void createFiles(){
             string pathName;
