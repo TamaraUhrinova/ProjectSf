@@ -14,7 +14,7 @@ namespace Projectsf
 
         public Logic(){
             this.numbers = new List<int>();
-            this.pathName = @"C:\Users\tamarau\Desktop\numberFiles/"; // po spustení programu sa na tejto adrese vytvorí 6 filov
+            this.pathName = @"doplniť adresu"; // po spustení programu sa na tejto adrese vytvorí 6 filov
             this.createFiles(); //vytvorí 5 vstupných a jeden výstupny file na adrese pathName  
             
             readFileToList($"{pathName}myFile1.txt"); //načítajú sa všetky čísla do jedného listu
