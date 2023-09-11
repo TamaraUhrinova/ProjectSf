@@ -13,14 +13,14 @@ namespace Projectsf
         private string pathName;
         public Logic(){
             this.numbers = new List<int>();
-            this.pathName = @"C:\Users\Lenovo\Desktop\numberFiles/";
+            this.pathName = @"C:\Users\tamarau\Desktop\numberFiles/"; //change
             this.createFiles();
-            readFileToList(pathName + "myFile1.txt");
-            readFileToList(pathName + "myFile2.txt");
-            readFileToList(pathName + "myFile3.txt");
-            readFileToList(pathName + "myFile4.txt");
-            readFileToList(pathName + "myFile5.txt"); 
-            writeResult(pathName + "result.txt");
+            readFileToList($"{pathName}myFile1.txt");
+            readFileToList($"{pathName}myFile2.txt");
+            readFileToList($"{pathName}myFile3.txt");
+            readFileToList($"{pathName}myFile4.txt");
+            readFileToList($"{pathName}myFile5.txt"); 
+            writeResult($"{pathName}result.txt");
         }
 
         private void readFileToList(string pathName) {
@@ -50,7 +50,7 @@ namespace Projectsf
             for (int i = 1; i <= 5; i++)
             {
                 Random rnd = new Random();
-                pathName = this.pathName + "myFile" + i + ".txt";
+                pathName = $"{this.pathName}myFile{i}.txt";
                 fs = File.Create(pathName);
                 fs.Close();
 
@@ -61,7 +61,7 @@ namespace Projectsf
                     File.AppendAllText(pathName, ",");
                 }
             }
-            pathName = this.pathName + "result.txt";
+            pathName = $"{this.pathName}result.txt";
             fs = File.Create(pathName);
             fs.Close();
         }
