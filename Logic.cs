@@ -13,7 +13,7 @@ namespace Projectsf
         private string pathName;
         public Logic(){
             this.numbers = new List<int>();
-            this.pathName = @"C:\Users\tamarau\Desktop\numberFiles/"; //chang
+            this.pathName = @"C:\Users\tamarau\Desktop\numberFiles/"; //change
             this.createFiles();
             readFileToList($"{pathName}myFile1.txt");
             readFileToList($"{pathName}myFile2.txt");
