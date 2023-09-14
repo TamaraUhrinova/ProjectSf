@@ -15,36 +15,55 @@ namespace Projectsf
         public Logic(){
             this.numbers = new List<int>();
             this.pathName = @"doplniť adresu"; // po spustení programu sa na tejto adrese vytvorí 6 filov
-            this.createFiles(); //vytvorí 5 vstupných a jeden výstupny file na adrese pathName  
+            this.createFiles(); 
             
-            readFileToList($"{pathName}myFile1.txt"); //načítajú sa všetky čísla do jedného listu
+            readFileToList($"{pathName}myFile1.txt"); 
             readFileToList($"{pathName}myFile2.txt");
             readFileToList($"{pathName}myFile3.txt");
             readFileToList($"{pathName}myFile4.txt");
             readFileToList($"{pathName}myFile5.txt"); 
             
-            writeResult($"{pathName}result.txt"); //čísla sa v liste usporiadajú a vypíšu do výstupného file
+            writeResult($"{pathName}result.txt"); 
         }
+     
+
+        /// <summary>
+        /// method, which reads text from file, stores it in a string, split string into substrings based on commas, saves it into a list of numbers, converts it into integers and store it in a list
+        /// </summary>
+        /// <param name="pathName"></param>
+        /// 
 
         private void readFileToList(string pathName) {
-            string content = File.ReadAllText(pathName); //funkcia na načítanie textu z file do stringu
-            List<string> text = content.Split(',').ToList(); // pomocný zoznam, funkcia split rozdelí na základe čiarok string do pola, ktorý funkciou ToList konvertujeme na zoznam
+            string content = File.ReadAllText(pathName); 
+            List<string> text = content.Split(',').ToList(); 
             
-            foreach (var num in text) //pridáme všetky prvky zoznamu, ktoré konvertujeme na integer
+            foreach (var num in text) 
             {
                this.numbers.Add(int.Parse(num));
             }
         }
 
+
+        /// <summary>
+        /// method, which takes a list of numbers, sorts it, prints to a file with commas between each number
+        /// </summary>
+        /// <param name="pathName"></param>
+        /// 
+
         private void writeResult(string pathName) {
-            this.numbers.Sort(); //funkcia na usporiadanie
-            foreach (var num in this.numbers) { //pridáme každý prvok zo zonamu s čiarkou
+            this.numbers.Sort();
+            foreach (var num in this.numbers) {
                 File.AppendAllText(pathName, num.ToString() + ",");
             }
         }
 
 
-        /*-----------------------------------------------------------------------------*/
+
+        /// <summary>
+        /// method, which creates 5 input files, which each stores a list of random numbers from 1-100 with commas and 1 empty output file
+        /// </summary>
+        /// 
+
         private void createFiles(){
             string pathName;
             FileStream fs;
@@ -55,15 +74,15 @@ namespace Projectsf
                 fs = File.Create(pathName); 
                 fs.Close(); 
 
-                for (int j = 1; j <= 10; j++) //pridá 10 random čísel do filu
+                for (int j = 1; j <= 10; j++) 
                 {
                     File.AppendAllText(pathName, rnd.Next(1, 100).ToString()); 
-                    if (j == 10) { break; } // výnimka, pri poslednom čísle nebola čiarka
-                    File.AppendAllText(pathName, ","); //pridanie textu do file
+                    if (j == 10) { break; } 
+                    File.AppendAllText(pathName, ","); 
                 }
             }
             pathName = $"{this.pathName}result.txt"; 
-            fs = File.Create(pathName); //vytvorenie výstupného file 
+            fs = File.Create(pathName); 
             fs.Close();
         }
     }
